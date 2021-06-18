@@ -7,6 +7,7 @@ import TopicNotFound from "../components/svg/TopicNotFound";
 import TopicSearch from "../components/TopicSearch";
 import RandomOffset from '../js/RandomOffset';
 import { userReducer, initialUserState } from '../js/userState';
+import host from '../components/host';
 
 
 const guestUser = () => {
@@ -17,7 +18,7 @@ const guestUser = () => {
 
 
   const search = async (_topic: string) => {
-    const countRes = await fetch(`http://localhost:3000/api/questionCount?username=anon&topic=${_topic}`);
+    const countRes = await fetch(`${host}/api/questionCount?username=anon&topic=${_topic}`);
 
     const { count } = await countRes.json();
 
@@ -45,7 +46,7 @@ const guestUser = () => {
     // a repeat q and a are retrieved. Repeats are much less likely as the set grows.
     dispatch({ type: "NEXTQUESTION", payload: { newQuestionAnswer: { question: " ", answer: " "} } })
 
-    const questionRes = await fetch(`http://localhost:3000/api/getQuestion?username=anon&topic=${topic}&offset=${offset}`);
+    const questionRes = await fetch(`${host}/api/getQuestion?username=anon&topic=${topic}&offset=${offset}`);
     const { question, answer } = await questionRes.json();
 
     const newQuestionAnswer = typeof question === 'undefined'

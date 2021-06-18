@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Col } from "react-bootstrap";
 import styles from './styles/ControllCard.module.css';
 import LoginBtn from "./svg/LoginBtn";
+import host from '../components/host';
 
 const Login = () => {
   const router = useRouter();
@@ -10,7 +11,7 @@ const Login = () => {
 
   const handleClick = async () => {
     if (userName) {
-      const datas = await fetch(`http://localhost:3000/api/userExists?username=${userName}`);
+      const datas = await fetch(`${host}/api/userExists?username=${userName}`);
       const { userExists } = await datas.json();
 
       if(userExists) {

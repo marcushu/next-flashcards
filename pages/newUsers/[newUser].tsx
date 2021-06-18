@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import HomeHead from "../../components/HomeHead";
 import styles from "../../styles/NewUser.module.css";
+import host from '../../components/host';
 
 const NewUser = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const NewUser = () => {
   const addTopic = async () => {
     if (newTopic) {
       // insert a new topic
-      const datas = await fetch(`http://localhost:3000/api/insertTopic?username=${newUser}&topic=${newTopic}`);
+      const datas = await fetch(`${host}/api/insertTopic?username=${newUser}&topic=${newTopic}`);
 
       // topicName will be an enpty string on failure.
       const { topicName } = await datas.json();

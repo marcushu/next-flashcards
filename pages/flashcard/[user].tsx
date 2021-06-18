@@ -7,6 +7,7 @@ import FlashcardTop from "../../components/FlashcardTop";
 import ModalDelete from "../../components/ModalDelete";
 import QuestionCard from "../../components/QuestionCard";
 import RandomOffset from '../../js/RandomOffset';
+import host from '../../components/host';
 
 interface QuestionType {
   question: string
@@ -27,7 +28,7 @@ const Flashcard = () => {
 
   useEffect(() => {
     const getTopics = async () => {
-      const datas = await fetch(`http://localhost:3000/api/userTopics?username=${user}`);
+      const datas = await fetch(`${host}/api/userTopics?username=${user}`);
       
       const _usersTopics = await datas.json();
 
@@ -44,7 +45,7 @@ const Flashcard = () => {
 
   const addTopic = async (newTopic: string) => {
     if(!state.userTopics.includes(newTopic)) {
-      await fetch(`http://localhost:3000/api/insertTopic?username=${user}&topic=${newTopic}`);
+      await fetch(`${host}/api/insertTopic?username=${user}&topic=${newTopic}`);
 
       const newRandGenerator = await getRandNumGenerator(newTopic);
 
@@ -75,7 +76,7 @@ const Flashcard = () => {
     // a repeat q and a are retrieved. Repeats are much less likely as the set grows.
     dispatch({ type: "NEXTQUESTION", payload: { newQuestionAnswer: { question: " ", answer: " "} } })
 
-    const questionRes = await fetch(`http://localhost:3000/api/getQuestion?username=${user}&topic=${topic}&offset=${offset}`);
+    const questionRes = await fetch(`${host}/api/getQuestion?username=${user}&topic=${topic}&offset=${offset}`);
     const { question, answer } = await questionRes.json() as { question: string, answer: string }
 
     const newQuestionAnswer = typeof question === 'undefined'
@@ -89,7 +90,7 @@ const Flashcard = () => {
 
 
   const deleteCurrentTopic = async () => {
-    await fetch(`http://localhost:3000/api/deleteTopic?username=${user}&topicToDelete=${state.currentTopic}`);
+    await fetch(`${host}/api/deleteTopic?username=${user}&topicToDelete=${state.currentTopic}`);
 
     dispatch({ type: "DELETETOPIC", payload: { topic: state.currentTopic } });
     
@@ -101,7 +102,7 @@ const Flashcard = () => {
 
   // FIXME: this seems to fail to reload a question after deletion when called with 2 questions.
   const deleteAquestion = async () => {
-    const url = "http://localhost:3000/api/deleteQuestion";
+    const url = `${host}/api/deleteQuestion`;
     const deleteThis = {
       userName: user,
       question: state.questionAnswer.question
@@ -121,7 +122,7 @@ const Flashcard = () => {
 
 
   const addAquestion = async (newQuestion: QuestionType) => {
-    const url = "http://localhost:3000/api/addQuestion";
+    const url = `${host}/api/addQuestion`;
     newQuestion.user = user as string;
     newQuestion.topic = state.currentTopic;
 
@@ -162,7 +163,7 @@ const Flashcard = () => {
 
 
   const getRandNumGenerator = async (_topic: string) => {
-    const countRes = await fetch(`http://localhost:3000/api/questionCount?username=${user}&topic=${_topic}`);
+    const countRes = await fetch(`${host}/api/questionCount?username=${user}&topic=${_topic}`);
 
     const { count } = await countRes.json();
 

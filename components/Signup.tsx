@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Col } from "react-bootstrap";
 import styles from './styles/ControllCard.module.css';
 import SignupBtn from "./svg/SignupBtn";
+import host from '../components/host';
 
 const Signup = () => {
   const router = useRouter();
@@ -10,13 +11,13 @@ const Signup = () => {
 
   const handleClick = async () => {
     if (newUsername) {
-      const datas = await fetch(`http://localhost:3000/api/userExists?username=${newUsername}`);
+      const datas = await fetch(`${host}/api/userExists?username=${newUsername}`);
       const { userExists } = await datas.json();
 
       if(userExists) {
         alert(`It looks like ${newUsername} is already taken.  Try another name`)
       } else {
-        await fetch(`http://localhost:3000/api/insertUser?newUserName=${newUsername}`);
+        await fetch(`${host}/api/insertUser?newUserName=${newUsername}`);
     
         router.push(`newUsers/${newUsername}`);
       }
