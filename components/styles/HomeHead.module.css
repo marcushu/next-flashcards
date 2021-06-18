@@ -1,0 +1,35 @@
+#myHeader {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 10px;
+    color: white;
+    background-color: rgb(154 128 159 / 38%);
+    margin-bottom: 2px;
+}
+
+.bigtitle {
+    font-size: 80px;
+}
+
+.headertext {
+    font-size: 25px;
+    color: rgb(185, 68, 198);
+}
+
+.flashcards {
+    color: white;
+    font-weight: bold;
+}
+
+
+@media (max-width: 750px) {
+    .bigtitle {
+        font-size: 36px;
+        text-align: center;
+    }
+    .headertext {
+        font-size: 12px;
+        color: rgb(185, 68, 198);
+        text-align: center;
+    }
+  }

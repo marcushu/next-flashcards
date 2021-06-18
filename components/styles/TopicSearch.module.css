@@ -1,0 +1,25 @@
+#searchrow {
+    background-color: #5c515e;
+    padding-top: 5px;
+}
+
+#labeltext {
+    color: white;
+    text-align: end;
+}
+
+@media (max-width: 750px) {
+    #labeltext {
+        text-align: center;
+    }
+    #searchbutton {
+        text-align: center;
+    }
+    #textbox {
+        width: 80% !important
+    }
+    #tboxcol {
+        display: flex;
+        justify-content: center;
+    }
+}

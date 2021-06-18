@@ -1,0 +1,10 @@
+#mainrow {
+    color: white;
+    font-size: 20px;
+    border-top-style: solid;
+}
+
+.emphasized {
+    color: white;
+    font-size: 32px;
+}

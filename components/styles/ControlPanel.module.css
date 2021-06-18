@@ -1,0 +1,13 @@
+.controlpanel {
+    font-size: 18px;
+    font-weight: lighter;
+    color: white;
+}
+
+a.whitebtn {
+    color: white;
+}
+
+a.whitebtn:hover {
+    color: black;
+}

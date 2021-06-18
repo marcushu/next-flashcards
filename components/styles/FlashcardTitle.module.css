@@ -1,0 +1,24 @@
+#myHeader {
+    padding-top: 25px;
+    padding-bottom: 20px;
+    color: white;
+    background-color: rgb(154 128 159 / 38%);
+}
+
+#selectedtopic {
+    padding-left: 30px;
+    font-size: 60px;
+    border-radius: 20px;
+}
+
+#questionmark {
+    color: rgb(176, 133, 180);
+    font-style: italic;
+}
+
+@media(max-width: 600px) {
+    #selectedtopic {
+        font-size: 40px;
+        padding-bottom: 10px;
+    }
+}

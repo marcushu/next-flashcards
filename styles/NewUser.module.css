@@ -1,0 +1,33 @@
+#welcomebody {
+    background-color: rgb(255 255 255 / 14%);
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+#newtopic {
+    border-radius: 5px;
+    border-style: solid;
+    border-color: lightgrey;
+    font-size: 25px;
+    padding: 10px;
+}
+
+#rightcol {
+    padding-top: 7px;
+}
+
+#leftcol {
+    padding-top: 10px;
+    text-align: right;
+}
+
+@media screen and (max-width: 860px) {
+    #leftcol {
+        text-align: center;
+    }
+
+    #rightcol {
+        text-align: center;
+        padding-top: 15px;
+    }
+}

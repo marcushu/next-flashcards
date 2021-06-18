@@ -1,0 +1,47 @@
+a.nextbutton {
+    color: white;
+    text-decoration: none;
+}
+
+a.nextbutton:hover {
+    color: rgb(255, 0, 234);
+}
+
+
+#cardhead {
+    background-color: #5c515d;
+    padding: 18px;
+    color: #d2caca;
+    font-size: 30px;
+    border-radius: 8px 8px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cardbody {
+    background-color: white;
+    border-radius: 0px 0px 8px 8px;
+    padding-bottom: 15px;
+}
+
+.qcard {
+    margin: 20px;
+    width: 800px;
+}
+
+.qtext {
+    font-size: 18px;
+    padding: 14px !important;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px;
+}
+
+#loadingmsg {
+    padding: 20px;
+    color: rgb(255, 0, 234);
+    background-color: white;
+    font-size: 28px;
+    border-radius: 0px 0px 8px 8px;
+    min-height: 100%;
+}
