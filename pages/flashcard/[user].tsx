@@ -116,7 +116,7 @@ const Flashcard = () => {
 
     const newRandNumGen = await getRandNumGenerator(state.currentTopic);
 
-    dispatch({ type: "ADDQUESTION", payload: { numGen: newRandNumGen } });
+    dispatch({ type: "DELETEAQUESTION", payload: { numGen: newRandNumGen } });
     getNextQuestion(state.currentTopic);
   }
 
@@ -134,9 +134,11 @@ const Flashcard = () => {
 
     const newRandNumGen = await getRandNumGenerator(state.currentTopic);
 
-    dispatch({ type: "ADDQUESTION", payload: { numGen: newRandNumGen } });
-
-    getNextQuestion(state.currentTopic);
+    dispatch({ 
+      type: "ADDQUESTION", 
+      payload: {
+        newQuestionAnswer: { question: newQuestion.question, answer: newQuestion.answer}, 
+        numGen: newRandNumGen } });
   }
 
   // These three methods handle deletion through the use of an "are you sure?" modal

@@ -12,7 +12,7 @@ const initialUserState = {
 
 type StateType = typeof initialUserState;
 type Action = {
-  type: "SETUP" | "ADDTOPIC" | "ADDQUESTION" | "SWITCHTOPIC" | "NEXTQUESTION" | "DELETETOPIC" | "UPDATETOPIC",
+  type: "SETUP" | "ADDTOPIC" | "ADDQUESTION" | "DELETEAQUESTION" | "SWITCHTOPIC" | "NEXTQUESTION" | "DELETETOPIC" | "UPDATETOPIC",
   payload: {
     topic?: string,
     userTopics?: string[]
@@ -45,8 +45,17 @@ const userReducer = (state: StateType, action: Action) => {
         }
       }
     case "ADDQUESTION":
-      if (action.payload.numGen)
-        return { ...state, randomOffset: action.payload.numGen }
+      if (action.payload.numGen && action.payload.newQuestionAnswer)
+        return { 
+          ...state, 
+          questionAnswer: action.payload.newQuestionAnswer,
+          randomOffset: action.payload.numGen }
+    case "DELETEAQUESTION":
+      if(action.payload.numGen)
+          return {
+            ...state,
+            randomOffset: action.payload.numGen
+          }
     case "SWITCHTOPIC":
       if (action.payload.topic && action.payload.numGen) {
         return {
