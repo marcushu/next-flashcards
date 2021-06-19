@@ -69,8 +69,8 @@ const Flashcard = () => {
   }
 
 
-  const getNextQuestion = async (topic: string) => {
-    const offset = state.randomOffset.getRandOffset();
+  const getNextQuestion = async (topic: string, newRandOffset?: RandomOffset) => {
+    const offset = newRandOffset !== undefined ? newRandOffset.getRandOffset() : state.randomOffset.getRandOffset();
 
     // Clear out the old question and answer.  This is necessary to ensure reloads even when
     // a repeat q and a are retrieved. Repeats are much less likely as the set grows.
@@ -100,7 +100,6 @@ const Flashcard = () => {
   }
 
 
-  // FIXME: this seems to fail to reload a question after deletion when called with 2 questions.
   const deleteAquestion = async () => {
     const url = `${host}/api/deleteQuestion`;
     const deleteThis = {
@@ -116,8 +115,8 @@ const Flashcard = () => {
 
     const newRandNumGen = await getRandNumGenerator(state.currentTopic);
 
-    dispatch({ type: "DELETEAQUESTION", payload: { numGen: newRandNumGen } });
-    getNextQuestion(state.currentTopic);
+    dispatch({ type: "DELETEAQUESTION", payload: { numGen: newRandNumGen } }); 
+    getNextQuestion(state.currentTopic, newRandNumGen);
   }
 
 
