@@ -47,12 +47,12 @@ const QuestionCard = ({ question, answer, nextQuestion, loggedIn }: QuestionCard
                 {isLoading ?
                   <LoadingQuestionMsg />
                   :
-                  <Col>
+                  <Col id={styles.questioncol}>
                     <div id={styles.cardhead} >
                       <div>
                         Q: {question}
                       </div>
-                      <div>
+                      <div id={styles.buttondiv}>
                         <NextQuestionBtn nextQuestion={getQuestion} />
                       </div>
                     </div>
