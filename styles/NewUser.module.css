@@ -31,3 +31,12 @@
         padding-top: 15px;
     }
 }
+
+@media screen and (max-width: 500px) {
+    #newtopic {
+        padding: 4px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+}

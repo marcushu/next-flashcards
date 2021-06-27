@@ -69,4 +69,10 @@ a.nextbutton:hover {
         margin-right: 0px;
         margin-left: 10px;
     }
+
+    .qcard {
+        margin:unset;
+        margin-top: 10px;
+        width: 800px;
+    }
 }
