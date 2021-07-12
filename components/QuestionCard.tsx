@@ -1,4 +1,4 @@
-import React  from "react";
+import React, { useLayoutEffect, useRef }  from "react";
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import LoadingQuestionMsg from "./LoadingQuestionMsg";
@@ -15,6 +15,13 @@ interface QuestionCardProps {
 
 const QuestionCard = ({ question, answer, nextQuestion, loggedIn }: QuestionCardProps) => {
   const [isLoading, setisLoading] = useState(false);
+  const questionRef = useRef<HTMLDivElement>(null);
+  
+  useLayoutEffect(() => {
+    if(questionRef.current)
+      questionRef.current.scrollIntoView();
+  })
+  
 
   const getQuestion = () => {
     setisLoading(true);
@@ -49,7 +56,7 @@ const QuestionCard = ({ question, answer, nextQuestion, loggedIn }: QuestionCard
                   :
                   <Col id={styles.questioncol}>
                     <div id={styles.cardhead} >
-                      <div>
+                      <div ref={questionRef}>
                         Q: {question}
                       </div>
                       <div id={styles.buttondiv}>
